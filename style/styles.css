@@ -1,0 +1,26 @@
+body{
+    background-color: rgb(221, 215, 215);
+    height: 150px;
+}
+h1{
+    margin-bottom: 10px;
+}
+#pesquisar{
+    width: 500px;
+    float: right;
+    margin-right: 20px;
+}
+.teste{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    float: right; 
+    margin-bottom: 25px;   
+}
+
+.d-flex justify-content-center{
+    height: 600px;
+}
+.w-75 p-3 {
+    height: 600px;
+}
