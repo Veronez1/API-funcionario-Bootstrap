@@ -91,7 +91,7 @@ function htmlBotaoApagarCliente(id){
 
 function editarCliente(id){
     fetch('http://localhost:8080/clientes/'+id, {
-        method: 'GET',
+        method: 'PUT',
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'

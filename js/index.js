@@ -1,5 +1,5 @@
 document.getElementById("form-cadastro").addEventListener("submit", e => {
-    
+    e.preventDefault();
     const dados = e.target.querySelectorAll("#formGroupExampleInput");
 
 
@@ -17,31 +17,73 @@ document.getElementById("form-cadastro").addEventListener("submit", e => {
         })
     }).then(response => {
         console.log(response);
-        
+        carregarFuncionarios();
 
-    }).catch(error => {
-        console.log(error);
-        alert("Houve um erro. Favor verificar o log CADASTRO.");
-    });
+    })
     $('#cadastrarModal').modal('hide')
-    carregarFuncionarios();
+    
 
 
 });
+
+//
+document.getElementById("form-editar").addEventListener("submit", e => {
+    e.preventDefault();
+    const id = document.getElementById("inputId").value
+    const nome = document.getElementById("inputNome").value;
+    const cargo = document.getElementById("inputCargo").value;
+    const salario = document.getElementById("inputSalario").value;
+    
+    fetch('http://localhost:8080/funcionarios', {
+        method: "PUT",
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+            id: id,
+            nome: nome,
+            cargo: cargo,
+            salario: salario
+        })
+    }).then(response => {
+        console.log(response);
+        carregarFuncionarios();
+
+    })
+    $('#editarModal').modal('hide')
+
+
+});
+//
+
+
 carregarFuncionarios();
 
 
 document.getElementById("confirm").addEventListener("show.bs.modal", function (e) {
     var button = e.relatedTarget;
-    var teste = button.getAttribute('data-id');
-    console.log("id do botão --> "+teste);
+    var id = button.getAttribute('data-id');
+    console.log("id do botão --> "+id);
     document.getElementById('btn-excluir-modal').addEventListener("click", function (e){    
-        apagarFuncionarios(teste);
+        apagarFuncionarios(id);
         carregarFuncionarios();
         $('#confirm').modal('hide')
     })
 });
 
+document.getElementById("editarModal").addEventListener("show.bs.modal", function (e) {
+    var button = e.relatedTarget;
+    var id =button.getAttribute('data-id');
+    console.log("id do botão editar -->" + id);              
+    editarFuncionarios(id);
+    
+
+}
+
+
+
+)
 
 function carregarFuncionarios() {
         fetch('http://localhost:8080/funcionarios', {
@@ -117,10 +159,11 @@ function editarFuncionarios(id) {
     }).then(content => {
         document.getElementById("inputId").value = content.id;
         document.getElementById("inputNome").value = content.nome;
-        document.getElementById("inputCargo").value = content.nome;
-        document.getElementById("inputSalario").value = content.nome;
+        document.getElementById("inputCargo").value = content.cargo;
+        document.getElementById("inputSalario").value = content.salario;
     }).catch(error => {
         console.log(error);
         alert("Houve um erro. Favor verificar o log. EDITAR");
     });
 }
+

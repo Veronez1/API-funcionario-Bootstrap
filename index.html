@@ -17,7 +17,7 @@
 		<div class="w-75 p-3" style="background-color: #eee; height: auto; ">
 			<h1>Cadastro de funcionarios</h1>
 			<div class="teste">
-				<input type="search" class="form-control" id="pesquisar" placeholder="Pesquisar" aria-label="Search">
+				
 				<button type="button" id="right" class="btn btn-primary" data-bs-toggle="modal"
 					data-bs-target="#cadastrarModal">
 					Cadastrar funcionario
@@ -47,33 +47,39 @@
 				aria-hidden="true">
 				<div class="modal-dialog">
 					<div class="modal-content">
-						<form action="">
+						<form action="" id="form-editar">
 							<div class="modal-header">
-								<h1 class="modal-title fs-5" id="exampleModalLabel">Cadastrar funcionario</h1>
+								<h1 class="modal-title fs-5" id="exampleModalLabel">Editar funcionario</h1>
 								<button type="button" class="btn-close" data-bs-dismiss="modal"
 									aria-label="Close"></button>
 							</div>
 							<div class="modal-body">
+								
 								<div class="mb-3">
-									<label for="formGroupExampleInput" class="form-label">Nome</label>
-									<input type="text" class="form-control" id="formGroupExampleInput"
+									<label for="inputId" class="form-label">ID</label>
+									<input type="text" class="form-control" id="inputId"
+										placeholder="Nome do funcionario" readonly>
+								</div>
+								<div class="mb-3">
+									<label for="inputNome" class="form-label">Nome</label>
+									<input type="text" class="form-control" id="inputNome"
 										placeholder="Nome do funcionario">
 								</div>
 								<div class="mb-3">
-									<label for="formGroupExampleInput" class="form-label">Cargo</label>
-									<input type="text" class="form-control" id="formGroupExampleInput"
+									<label for="inputCargo" class="form-label">Cargo</label>
+									<input type="text" class="form-control" id="inputCargo"
 										placeholder="Cargo do funcionario">
 								</div>
 								<div class="mb-3">
-									<label for="formGroupExampleInput" class="form-label">Salário</label>
-									<input type="text" class="form-control" id="formGroupExampleInput"
+									<label for="inputSalario" class="form-label">Salário</label>
+									<input type="text" class="form-control" id="inputSalario"
 										placeholder="Salário do funcionario">
 								</div>
 							</div>
 							<div class="modal-footer">
 								<button type="button" class="btn btn-secondary"
 									data-bs-dismiss="modal">Cancelar</button>
-								<button type="submit" class="btn btn-success">Editar</button>
+								<button type="submit" id = "btn-editar-modal" class="btn btn-success">Editar</button>
 
 							</div>
 						</form>
